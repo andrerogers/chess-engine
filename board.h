@@ -31,10 +31,14 @@ extern int Sq64ToSq120[64];
 
 extern void InitSq120ToSq64();
 extern void PrintBitBoard(U64 bb);
+extern int CountBits(U64 b);
+extern int PopBit(U64 *bb);
 
 // Macros
 #define FR2SQ(f, r) ( (21 + (f) ) + ( (r) * 10 ) )
 #define SQ64(i) Sq120ToSq64[i] 
+#define CNT(b) CountBits(b)
+#define POP(b) PopBit(b)
 
 typedef struct {
 

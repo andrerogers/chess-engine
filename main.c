@@ -1,41 +1,24 @@
 #include "board.h"
 
-void Init() {
-  InitSq120ToSq64();
-}
+void Init() { InitSq120ToSq64(); }
 
 int main() {
   printf("%s\n", ENGINE_NAME);
 
   Init();
 
-  for(int i = 0; i < BRD_SQ_NUM; ++i) {
-    if(i % 10 == 0) printf("\n");
-    printf("%5d", Sq120ToSq64[i]);
-  }
-
-  printf("\n");
-  printf("\n");
-
-  for(int i = 0; i < 64; ++i) {
-    if(i % 8 == 0) printf("\n");
-    printf("%5d", Sq64ToSq120[i]);
-  }
-
   U64 bitboard = 0ULL;
 
-  printf("Start:\n\n");
-  PrintBitBoard(bitboard);
-
   bitboard |= (1ULL << SQ64(D2));
+  bitboard |= (1ULL << SQ64(D3));
+  bitboard |= (1ULL << SQ64(D4));
 
-  printf("D2 Added:\n\n");
-  PrintBitBoard(bitboard);
-
-  bitboard |= (1ULL << SQ64(G2));
-
-  printf("G2 Added:\n\n");
-  PrintBitBoard(bitboard);
+  int sq64 = 0;
+  while (bitboard) {
+    sq64 = PopBit(&bitboard);
+    printf("popped: %d\n", sq64);
+    PrintBitBoard(bitboard);
+  }
 
   return 0;
 }

@@ -1,7 +1,7 @@
 # Variables
 CC = clang
 LD = lld
-CFLAGS = -Wall -Wextra -O2
+CFLAGS = -Wall -Wextra -O2 -g
 LDFLAGS = -fuse-ld=lld
 BIN_DIR = bin
 
